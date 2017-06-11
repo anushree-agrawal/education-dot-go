@@ -115,10 +115,10 @@ def resume(phone_num):
     send_sms(phone_num, to_send)
 
 def welcome_english(phone_num):
-    send_sms(phone_num, 'Hi! Welcome to teachHer, an on-the-go education system designed for women. Thanks for registering for courses in Arabic. To see all the courses that are available, type "C". If you need help, type "HELP". To return to the home text, type HOME.')
+    send_sms(phone_num, 'Hi! Welcome to teachHer, an on-the-go education system designed for women. Thanks for registering for courses in English. To see all the courses that are available, type "C". If you need help, type "HELP". To return to the home text, type HOME.')
 
 def welcome_arabic(phone_num):
-    send_sms(phone_num, '')
+    send_sms(phone_num, u'مرحبا! مرحبا بكم في تيتشير، وهو نظام التعليم على الحركة والتنقل مصممة للنساء. شكرا للتسجيل في دورات اللغة الإنجليزية. لمشاهدة جميع الدورات المتوفرة، اكتب "C". إذا كنت بحاجة إلى مساعدة، اكتب "هيلب". للعودة إلى النص الرئيسي، اكتب هوم.')
 
 def quiz(phone_num):
     to_send = quiz_content[course_num][class_num+1]
