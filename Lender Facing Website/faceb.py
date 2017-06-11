@@ -66,6 +66,9 @@ def facebook_authorized(resp):
 def logged_in():
     return render_template('logged_in.html', me=json.loads(session['me']))
 
+@app.route('/thanks', methods=('GET', 'POST'))
+def thanks():
+    return render_template('thanks.html', me=json.loads(session['me']))
 
 @facebook.tokengetter
 def get_facebook_oauth_token():

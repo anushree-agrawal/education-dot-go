@@ -1,9 +1,6 @@
 from flask import Flask, request, redirect
 from twilio.twiml.messaging_response import MessagingResponse
-from twilio import twiml
-import datetime
-from modules import *
-from playhouse.flask_utils import FlaskDB
+from modules.status_response import transition
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -16,8 +13,14 @@ def route():
     resp = MessagingResponse()
     message = "You sent: " + body + " from " + from_number
     # resp.message(message)
-    send.send_sms(from_number, body)
-    return str(resp)
+    # send.send_sms(from_number, body)
+	transition(from_number, body)
+    # return str(resp)
+    return 200
+    # resp = MessagingResponse()
+    # message = "You sent: " + body + " from " + from_number
+    # resp.message(message)
+    # return str(resp)
 
 if __name__ == "__main__":
     app.run()
