@@ -1,0 +1,28 @@
+# Database Schema Yaml
+
+# users
+id: real (primary key)
+first_name: text
+last_name: text
+
+# courses
+id: real (primary key) (course_code)
+title: text
+description: text
+
+# lessons
+id: real (primary key)
+title: text
+data: text
+course_id: real (foreigh key)
+
+# user_courses
+user_id: real (foreign key) (users.id)
+course_id: real (foreign key) (courses.id)
+
+# quizzes
+id: real (primary key) (lessons)
+question: text
+answer_choices: text (optional)
+answer: text
+course_id: real (foreign key) (courses)
