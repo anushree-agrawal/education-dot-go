@@ -18,4 +18,12 @@ def send_sms(phone_num, text_body):
                                              body=str(text_body))
     logging.info({'sent_to': phone_num, 'message': text_body})
 
+# def send_mms(phone_num, media):
+# 	message = client.api.account.messages.create(to="+12316851234",
+#                                              from_="+15555555555",
+#                                              body="Hello there!",
+#                                              media_url=[
+#                                                    'https://demo.twilio.com/owl.png',
+#                                                    'https://demo.twilio.com/logo.png'])
+
 # send_sms('+16177101266', 'Parker you bastard!')
