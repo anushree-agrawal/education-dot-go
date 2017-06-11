@@ -18,4 +18,4 @@ def send_sms(phone_num, text_body):
                                              body=str(text_body))
     logging.info({'sent_to': phone_num, 'message': text_body})
 
-send_sms('+16177101266', 'Parker you bastard!')
+# send_sms('+16177101266', 'Parker you bastard!')
