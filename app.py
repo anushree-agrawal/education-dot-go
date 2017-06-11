@@ -5,36 +5,10 @@ import datetime
 from peewee import *
 from playhouse.flask_utils import FlaskDB
 
-<<<<<<< HEAD
-from modules import *
-
-app = Flask(__name__)
-# app.config.from_object(__name__)
-
-# db_wrapper = FlaskDB(app)
-=======
-DATABASE = 'test.db'
-
+import modules
 
 app = Flask(__name__)
 app.config.from_object(__name__)
-
-db_wrapper = FlaskDB(app)
-
-
-# add schemas below
-class User(db_wrapper.Model):
-    first_name = TextField()
-    last_name = TextField()
-
-class Course(db_wrapper.Model):
-    title = TextField()
-    description = TextField()
-
-class UserCourse(db_wrapper.Model):
-    user_id = ForeignKeyField(User, related_name='in-class')
-    course_id = ForeignKeyField(Course, related_name='enrolled')
-    hasTaken = booleanField(default = false)
 
 @app.route("/", methods=['GET', 'POST'])
 def route():
