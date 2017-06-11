@@ -1,3 +1,4 @@
+#! /usr/local/bin/python -*- coding: UTF-8 -*-
 from send import send_sms
 from random import randint
 
@@ -68,9 +69,9 @@ def transition(phone_num, body):
         body = '/' + body
         body_split = body.lower().split()
         message = body_split[0]
-        if message == '10054':
+        if message == '/10054':
             welcome_english(phone_num)
-        elif message == '10022':
+        elif message == '/10022':
             welcome_arabic(phone_num)
         elif message == '/help':
             help(phone_num)
