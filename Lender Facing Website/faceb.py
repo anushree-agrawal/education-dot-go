@@ -70,6 +70,11 @@ def logged_in():
 def thanks():
     return render_template('thanks.html', me=json.loads(session['me']))
 
+
+@app.route('/showprog', methods=('GET', 'POST'))
+def showprog():
+    return render_template('showprog.html', me=json.loads(session['me']))
+
 @facebook.tokengetter
 def get_facebook_oauth_token():
     return session.get('oauth_token')
