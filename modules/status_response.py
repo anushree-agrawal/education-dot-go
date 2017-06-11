@@ -2,11 +2,11 @@ from send import send_sms
 # TODO: query the status of this phone number
 
 users = {
-    '+14088288498': ['Vibhav', '1.1', False],
-    '+15133311772': ['Rajat', '1.1', False],
-    '+16177101266': ['Parker', '1.1', False],
-    '+18324836840': ['Anushree', '1.1', False],
-    '+14054036409': ['Joseph', '1.1', False]
+    '+14088288498': ['Vibhav', 1, 1, False],
+    '+15133311772': ['Rajat', 1, 1, False],
+    '+16177101266': ['Parker', 1, 1, False],
+    '+18324836840': ['Anushree', 1, 1, False],
+    '+14054036409': ['Joseph', 2, 1, False]
 }
 
 courses = {
@@ -21,18 +21,12 @@ courses = {
 }
 
 def get_user_info(phone_num):
-    global users
     val = users[phone_num]
-    name = val[0]; status = val[1]; taking_quiz = val[2]
-    course_num = int(status[0])
-    class_num = int(status[2])
-    global
-
-# status = '1.2'
-# taking_quiz = False
-
+    name = val[0]; class_num = val[1];  course_num = val[2]; taking_quiz = val[3]
+    global name; global class_num; global course_num; global taking_quiz
 
 def transition(phone_num, body):
+    get_user_info(phone_num)
     if taking_quiz:
         ans_verify(phone_num, body)
     else:
