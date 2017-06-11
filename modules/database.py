@@ -28,6 +28,7 @@ class UserCourse(db_wrapper.Model):
     class Meta:
         primary_key = CompositeKey('user_id', 'course_id')
 
+# Run only once
 def setup_database():
     DATABASE.create_tables([User, Course, UserCourse])
 

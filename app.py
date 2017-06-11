@@ -5,7 +5,7 @@ import datetime
 from peewee import *
 from playhouse.flask_utils import FlaskDB
 
-from modules import *
+import modules
 
 app = Flask(__name__)
 app.config.from_object(__name__)
