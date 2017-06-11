@@ -1,0 +1,27 @@
+1. Text status_code to Twilio phone number
+
+2. Hi! Welcome to Education.Go, an on-the-go education system. To see all the courses that are available, type "C". If you need help, type "HELP". To return to the home text, type HOME. 
+
+Welcome back to Education.Go. We're so ready to learn again with you! To see all courses, type "C". To see your progress and how your community is doing, type "P". If you need help, type "HELP". At any time, to return to the home text, type HOME.
+
+
+3. "C" Here are all of the courses that are available! To start a course, text back the number of the course you want to start.
+	1. Health and Wellness Education
+	2. Mathematics - Grade 8
+	3. Science - Biology
+"1": Get ready to start the Health and Wellness Education course! If you need to leave the course at any time, text back EXIT. We'll save your progress. 
+
+This class has x lessons, and if you complete all of them, you can get a 10 SDG reward.
+
+Lesson 1: Bla bla bla bla bla bla 
+Here's the quiz question for lesson 1! Reply back with the answer
+- That's correct! Awesome job. Let's move on to lesson 2.
+- Hmm, that's not quite right. Give it another shot!
+
+
+P - Progress:
+	Your progress: You only need _x_ more lessons until you can get a reward! 
+
+	Your community: Today, Sonia completed 3 lessons! She's doing awesome.
+
+HELP: Welcome to Education.Go help! If you need help with the app, your account, or payment, please text or call xxx-xxx-xxxx, your camp UN contact. 
