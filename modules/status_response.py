@@ -46,7 +46,7 @@ ans = {
     1: {
         1: ['B', 'B'],
         2: ['C']
-    }    
+    }
 }
 
 conf_code = randint(1000, 9999)
@@ -144,10 +144,3 @@ def ans_verify(phone_num, message):
         print(users[phone_num][2])
         to_send = lessons[users[phone_num][1]][users[phone_num][2]+1] # TODO: query the class information
         send_sms(phone_num, to_send)
-
-
-
-
-
-
-
