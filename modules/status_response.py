@@ -85,6 +85,8 @@ def transition(phone_num, body):
             prize(phone_num)
         elif message == conf_code:
             put_money(phone_num)
+        elif message == '/leaderboard':
+            leaderboard(phone_num)
 
 def not_in_db(phone_num):
     send_sms(phone_num,
@@ -97,6 +99,12 @@ def in_db(phone_num):
 def progress(phone_num):
     send_sms(phone_num,
              'Current progress is at %s class number %s' % (courses[course_num], class_num))
+
+def leaderboard(phone_num):
+    well = 'Anushree'
+    poorly = 'Joseph'
+    send_sms(phone_num,
+        'Today in your community, %s is doing really well with %d courses completed. If you see her around, tell her congratulations! If you see %s around, make sure to encourage her to continue working with teachHer!' % (well, 10, bad))
 
 def help(phone_num):
     assist = '+16177101267'
@@ -122,6 +130,7 @@ def prize(phone_num):
 
 def put_money(phone_num):
     send_sms(phone_num, 'We have deposited the 10 SDG reward in your parents account through MPesa. Keep up all the hard work!')
+
 def ans_verify(phone_num, message):
     # set taking_quiz = False
     users[phone_num][3] = False
