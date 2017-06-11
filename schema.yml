@@ -10,20 +10,6 @@ id: integer (primary key) (course_code)
 title: text
 description: text
 
-# lessons
-id: integer (primary key)
-title: text
-data: text
-image: text
-course_id: integer (foreigh key course.id)
-
 # user_courses
 user_id: integer (foreign key) (users.id)
-course_id: integer (foreign key) (courses.id)
-
-# quizzes
-id: integer (primary key) (lessons)
-question: text
-answer_choices: text (optional)
-answer: text
 course_id: integer (foreign key) (courses.id)
