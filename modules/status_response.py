@@ -62,6 +62,7 @@ def transition(phone_num, body):
     if taking_quiz:
         ans_verify(phone_num, body)
     else:
+        body = '/' + body
         body_split = body.lower().split()
         message = body_split[0]
         if message == '/help':
@@ -87,7 +88,6 @@ def progress(phone_num):
              'Current progress is at %s class number %s' % (courses[course_num], class_num))
 
 def help(phone_num):
-    print 'help is called'
     assist = '+16177101267'
     send_sms(phone_num, 'Please contact this number for furthuer assistance: %s' % assist)
 
@@ -109,7 +109,8 @@ def ans_verify(phone_num, message):
         send_sms(phone_num, 'Congratulations! You have entered the correct answer :)')
         # update the status of the phone number in db
         users[phone_num][2] += 1
-        to_send = lessons[course_num][class_num+1] # TODO: query the class information
+        print(users[phone_num][2])
+        to_send = lessons[users[phone_num][1]][users[phone_num][2]+1] # TODO: query the class information
         send_sms(phone_num, to_send)
 
 
