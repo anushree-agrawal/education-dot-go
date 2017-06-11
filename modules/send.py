@@ -18,7 +18,7 @@ def send_sms(phone_num, text_body):
             client.messages.create(to=str(phone_num),
                                    from_="+16179413912",
                                    body=str(text_body[0]),
-                                   media_url=text_body[1])
+                                   media_url= 'static/images' + text_body[1])
         else: # no URL available
             client.messages.create(to=str(phone_num),
                                    from_="+16179413912",
