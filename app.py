@@ -15,7 +15,8 @@ def route():
     body = request.values.get('Body', None)
     resp = MessagingResponse()
     message = "You sent: " + body + " from " + from_number
-    resp.message(message)
+    # resp.message(message)
+    send.send_sms(from_number, body)
     return str(resp)
 
 if __name__ == "__main__":
