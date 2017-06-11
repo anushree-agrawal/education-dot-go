@@ -51,7 +51,7 @@ ans = {
 }
 
 conf_code = randint(1000, 9999)
-
+print(conf_code)
 
 def get_user_info(phone_num):
     val = users[phone_num]
@@ -62,6 +62,7 @@ def get_user_info(phone_num):
 # taking_quiz = False
 
 def transition(phone_num, body):
+    print(body)
     get_user_info(phone_num)
     if taking_quiz:
         ans_verify(phone_num, body)
@@ -84,7 +85,8 @@ def transition(phone_num, body):
             users[phone_num][3] = True
         elif message == '/prize':
             prize(phone_num)
-        elif message == conf_code:
+        elif message == '/' + str(conf_code):
+            print('lalala')
             put_money(phone_num)
         elif message == '/leaderboard':
             leaderboard(phone_num)
@@ -105,21 +107,21 @@ def leaderboard(phone_num):
     well = 'Anushree'
     poorly = 'Joseph'
     send_sms(phone_num,
-        'Today in your community, %s is doing really well with %d courses completed. If you see her around, tell her congratulations! If you see %s around, make sure to encourage her to continue working with teachHer!' % (well, 10, bad))
+        'Today in your community, %s is doing really well with %d courses completed. If you see her around, tell her congratulations! If you see %s around, make sure to encourage her to continue working with teachHer!' % (well, 10, poorly))
 
 def help(phone_num):
     assist = '+16177101267'
     send_sms(phone_num, 'Please contact this number for furthuer assistance: %s' % assist)
 
 def resume(phone_num):
-    to_send = lessons[course_num][class_num+1] # TODO: query the class information
+    to_send = lessons[course_num][class_num+1]
     send_sms(phone_num, to_send)
 
 def welcome_english(phone_num):
     send_sms(phone_num, 'Hi! Welcome to teachHer, an on-the-go education system designed for women. Thanks for registering for courses in English. To see all the courses that are available, type "C". If you need help, type "HELP". To return to the home text, type HOME.')
 
 def welcome_arabic(phone_num):
-    send_sms(phone_num, u'مرحبا! مرحبا بكم في تيتشير، وهو نظام التعليم على الحركة والتنقل مصممة للنساء. شكرا للتسجيل في دورات اللغة الإنجليزية. لمشاهدة جميع الدورات المتوفرة، اكتب "C". إذا كنت بحاجة إلى مساعدة، اكتب "هيلب". للعودة إلى النص الرئيسي، اكتب هوم.')
+    send_sms(phone_num, 'مرحبا! مرحبا بكم في تيتشير، وهو نظام التعليم على الحركة والتنقل مصممة للنساء. شكرا للتسجيل في دورات اللغة الإنجليزية. لمشاهدة جميع الدورات المتوفرة، اكتب "C". إذا كنت بحاجة إلى مساعدة، اكتب "هيلب". للعودة إلى النص الرئيسي، اكتب هوم.')
 
 def quiz(phone_num):
     to_send = quiz_content[course_num][class_num+1]
