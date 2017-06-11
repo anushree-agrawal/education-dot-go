@@ -65,7 +65,11 @@ def transition(phone_num, body):
         body = '/' + body
         body_split = body.lower().split()
         message = body_split[0]
-        if message == '/help':
+        if message == '10054':
+            welcome_english(phone_num)
+        elif message == '10022':
+            welcome_arabic(phone_num)
+        elif message == '/help':
             help(phone_num)
         elif message == '/progress':
             progress(phone_num)
@@ -81,7 +85,7 @@ def not_in_db(phone_num):
 
 def in_db(phone_num):
     send_sms(phone_num,
-             'Hi! Welcome to Education.Go, an on-the-go education system. To see all the courses that are available, type "C". If you need help, type "HELP". To return to the home text, type HOME.')
+             'Hi! Welcome to teachHer, an on-the-go education system. To see all the courses that are available, type "C". If you need help, type "HELP". To return to the home text, type HOME.')
 
 def progress(phone_num):
     send_sms(phone_num,
@@ -94,6 +98,12 @@ def help(phone_num):
 def resume(phone_num):
     to_send = lessons[course_num][class_num+1] # TODO: query the class information
     send_sms(phone_num, to_send)
+
+def welcome_english(phone_num):
+    send_sms(phone_num, 'مرحبا! مرحبا بكم في تيتشير، وهو نظام التعليم على الحركة والتنقل مصممة للنساء. شكرا على التسجيل في دورات اللغة العربية. لمشاهدة جميع الدورات المتوفرة، اكتب "C". إذا كنت بحاجة إلى مساعدة، اكتب "هيلب". للعودة إلى النص الرئيسي، اكتب هوم.')
+
+def welcome_arabic(phone_num):
+    send_sms(phone_num, )
 
 def quiz(phone_num):
     to_send = quiz_content[course_num][class_num+1]
