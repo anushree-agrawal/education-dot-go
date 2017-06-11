@@ -76,7 +76,7 @@ def transition(phone_num, body):
             help(phone_num)
         elif message == '/progress':
             progress(phone_num)
-        elif message == '/resume':
+        elif message == '/resume' or message == '/start' or message == '/restart':
             resume(phone_num)
         elif message == '/test' or message == '/exam' or message == '/quiz':
             quiz(phone_num)
@@ -102,7 +102,7 @@ def progress(phone_num):
 
 def leaderboard(phone_num):
     well = 'Anushree'
-    poorly = 'Joseph'
+    poorly = 'Anita'
     send_sms(phone_num,
         'Today in your community, %s is doing really well with %d courses completed. If you see her around, tell her congratulations! If you see %s around, make sure to encourage her to continue working with teachHer!' % (well, 10, poorly))
 
