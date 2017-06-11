@@ -5,7 +5,7 @@ import datetime
 from peewee import *
 from playhouse.flask_utils import FlaskDB
 
-DATABASE = ''
+DATABASE = 'test.db'
 
 
 app = Flask(__name__)
@@ -16,12 +16,17 @@ db_wrapper = FlaskDB(app)
 
 # add schemas below
 class User(db_wrapper.Model):
-    # username = CharField(unique=True)
+    first_name = TextField()
+    last_name = TextField()
 
-class Tweet(db_wrapper.Model):
-    # user = ForeignKeyField(User, related_name='tweets')
-    # content = TextField()
-    # timestamp = DateTimeField(default=datetime.datetime.now)
+class Course(db_wrapper.Model):
+    title = TextField()
+    description = TextField()
+
+class UserCourse(db_wrapper.Model):
+    user_id = ForeignKeyField(User, related_name='in-class')
+    course_id = ForeignKeyField(Course, related_name='enrolled')
+    hasTaken = booleanField(default = false)
 
 @app.route("/", methods=['GET', 'POST'])
 def hello_monkey():
