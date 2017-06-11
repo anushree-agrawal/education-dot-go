@@ -1,4 +1,4 @@
-from modules.send import send_sms
+from send import send_sms
 # TODO: query the status of this phone number
 
 users = {

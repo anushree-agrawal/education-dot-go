@@ -2,10 +2,8 @@ from flask import Flask, request, redirect
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio import twiml
 import datetime
-from peewee import *
+from modules import *
 from playhouse.flask_utils import FlaskDB
-
-import modules
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -19,7 +17,6 @@ def route():
     message = "You sent: " + body + " from " + from_number
     resp.message(message)
     return str(resp)
-
 
 if __name__ == "__main__":
     app.run()
