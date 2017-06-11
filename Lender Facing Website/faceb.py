@@ -3,6 +3,7 @@ from flask_oauth import OAuth
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
+import json
 
 class MyForm(FlaskForm):
     login = SubmitField('Login', validators=[DataRequired()])
@@ -57,8 +58,13 @@ def facebook_authorized(resp):
         )
     session['oauth_token'] = (resp['access_token'], '')
     me = facebook.get('/me')
-    return 'Logged in as id=%s name=%s redirect=%s' % \
-        (me.data['id'], me.data['name'], request.args.get('next'))
+    messages = json.dumps({"name":me.data["name"]})
+    session['me'] = messages
+    return redirect(url_for('logged_in'))
+
+@app.route('/logged_in', methods=('GET', 'POST'))
+def logged_in():
+    return render_template('logged_in.html', me=json.loads(session['me']))
 
 
 @facebook.tokengetter
