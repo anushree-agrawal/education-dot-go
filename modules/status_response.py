@@ -1,4 +1,5 @@
 from send import send_sms
+from random import randint
 
 # TODO: query the status of this phone number
 
@@ -48,6 +49,8 @@ ans = {
     }    
 }
 
+conf_code = randint(1000, 9999)
+
 
 def get_user_info(phone_num):
     val = users[phone_num]
@@ -78,6 +81,10 @@ def transition(phone_num, body):
         elif message == '/test' or message == '/exam' or message == '/quiz':
             quiz(phone_num)
             users[phone_num][3] = True
+        elif message == '/prize':
+            prize(phone_num)
+        elif message == conf_code:
+            put_money(phone_num)
 
 def not_in_db(phone_num):
     send_sms(phone_num,
@@ -100,15 +107,21 @@ def resume(phone_num):
     send_sms(phone_num, to_send)
 
 def welcome_english(phone_num):
-    send_sms(phone_num, 'مرحبا! مرحبا بكم في تيتشير، وهو نظام التعليم على الحركة والتنقل مصممة للنساء. شكرا على التسجيل في دورات اللغة العربية. لمشاهدة جميع الدورات المتوفرة، اكتب "C". إذا كنت بحاجة إلى مساعدة، اكتب "هيلب". للعودة إلى النص الرئيسي، اكتب هوم.')
+    send_sms(phone_num, 'Hi! Welcome to teachHer, an on-the-go education system designed for women. Thanks for registering for courses in Arabic. To see all the courses that are available, type "C". If you need help, type "HELP". To return to the home text, type HOME.')
 
 def welcome_arabic(phone_num):
-    send_sms(phone_num, )
+    send_sms(phone_num, 'مرحبا! مرحبا بكم في تيتشير، وهو نظام التعليم على الحركة والتنقل مصممة للنساء. شكرا على التسجيل في دورات اللغة العربية. لمشاهدة جميع الدورات المتوفرة، اكتب "C". إذا كنت بحاجة إلى مساعدة، اكتب "هيلب". للعودة إلى النص الرئيسي، اكتب هوم.')
 
 def quiz(phone_num):
     to_send = quiz_content[course_num][class_num+1]
     send_sms(phone_num, to_send)
 
+def prize(phone_num):
+    send_sms(phone_num, 'Congratulations! You received a 10 SDG reward for all of your hard work. Please visit Parker, your community member for your confirmation code and enter it!')
+    send_sms('+16177101266', 'Hi Parker! A member of your community, %s has earned a reward through teachHer. Please give her the code %d when you see her so she can redeem her prize! Thanks for your help.' % (users[phone_num][0], conf_code))
+
+def put_money(phone_num):
+    send_sms(phone_num, 'We have deposited the 10 SDG reward in your parents account through MPesa. Keep up all the hard work!')
 def ans_verify(phone_num, message):
     # set taking_quiz = False
     users[phone_num][3] = False
@@ -116,7 +129,7 @@ def ans_verify(phone_num, message):
     if ans[course_num][class_num+1] != [x.upper() for x in message.split(",")]:
         send_sms(phone_num, 'Sorry the answer was incorrect')
     else:
-        send_sms(phone_num, 'Congratulations! You have entered the correct answer :)')
+        send_sms(phone_num, 'Congratulations! You have entered the correct answer. You are learning so much!')
         # update the status of the phone number in db
         users[phone_num][2] += 1
         print(users[phone_num][2])
