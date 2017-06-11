@@ -1,28 +1,29 @@
 # Database Schema Yaml
 
 # users
-id: real (primary key)
+id: integer (primary key)
 first_name: text
 last_name: text
 
 # courses
-id: real (primary key) (course_code)
+id: integer (primary key) (course_code)
 title: text
 description: text
 
 # lessons
-id: real (primary key)
+id: integer (primary key)
 title: text
 data: text
-course_id: real (foreigh key)
+image: text
+course_id: integer (foreigh key course.id)
 
 # user_courses
-user_id: real (foreign key) (users.id)
-course_id: real (foreign key) (courses.id)
+user_id: integer (foreign key) (users.id)
+course_id: integer (foreign key) (courses.id)
 
 # quizzes
-id: real (primary key) (lessons)
+id: integer (primary key) (lessons)
 question: text
 answer_choices: text (optional)
 answer: text
-course_id: real (foreign key) (courses)
+course_id: integer (foreign key) (courses.id)
