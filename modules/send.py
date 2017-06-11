@@ -19,7 +19,7 @@ def send_sms(phone_num, text_body):
 	if isinstance(text_body, tuple):
 		if text_body[1] is not None:
 			# pdb.set_trace()
-			client.messages.create(to=str(phone_num), from_="+16179413912", body=str(text_body[0]), media_url=['https://www.linkedin.com/in/raymondwyin/photo/'])
+			client.messages.create(to=str(phone_num), from_="+16179413912", body=str(text_body[0]), media_url=[text_body[1]])
 		else: # no URL available
 			client.messages.create(to=str(phone_num), from_="+16179413912", body=str(text_body[0]))
 	else: # when the input message is not a tuple

@@ -2,8 +2,6 @@
 from send import send_sms
 from random import randint
 
-# TODO: query the status of this phone number
-
 users = {
     '+14088288498': ['Vibhav', 1, 0, False],
     '+15133311772': ['Rajat', 1, 0, False],
@@ -25,14 +23,14 @@ courses = {
 
 lessons = {
     1: {
-        1: ("Lesson 1: Welcome to Sexual Education 101! We're very excited to have you and to help you understand your body and empower you to make safe, healthy sexual decisions. For our first course we'll be talking about the parts of the female reproductive system. The female reproductive system is comprised of three major parts: the vagina, the cervix, and the uterus. The vagina is a hollow tube that extends from the external opening to the cervix (the vulva is the very outside portion); the vulva contains the clitoris, and the urethera where urine is passed. The uterine lining is an inner part of the body that is shed during your menstrual cycle - we'll discuss this in lesson 5! The uterus is where the baby develops after intercourse (discussed in lesson 4). The ovaries connect the uterus to the fallopian tubes and this is where the female reproductive hormones--namely estrogen--are released during puberty.", None),
+        1: ("Lesson 1: Welcome to Sexual Education 101! We're very excited to have you and to help you understand your body and empower you to make safe, healthy sexual decisions. For our first course we'll be talking about the parts of the female reproductive system. The female reproductive system is comprised of three major parts: the vagina, the cervix, and the uterus. The vagina is a hollow tube that extends from the external opening to the cervix (the vulva is the very outside portion); the vulva contains the clitoris, and the urethera where urine is passed. The uterine lining is an inner part of the body that is shed during your menstrual cycle - we'll discuss this in lesson 5! The uterus is where the baby develops after intercourse (discussed in lesson 4). The ovaries connect the uterus to the fallopian tubes and this is where the female reproductive hormones--namely estrogen--are released during puberty.", 'http://i62.photobucket.com/albums/h92/Anushree_Agrawal/gallery_1475703188_g_vlKTP_zpsain5efaf.jpg?t=1497116335'),
         2: ("Lesson 2: Welcome back to Sexual Education 101! Today we'll be talking about the male reproductive system. The male reproductive system includes the scrotum, testes, spermatic ducts, sex glands, and penis. These organs work together to produce sperm, the male gamete, and the other components of semen. These organs also work together to deliver semen out of the body and into the vagina where it can fertilize egg cells to produce offspring", None),
         3: ("Lesson 3: Welcome back to Sexual Education 101! Today's lesson is about sexual reproduction and intercourse. All offspring have genetic material from the mom and the dad. When a male and a female have sexual intercourse with each other, they share genetic information that is used to create offspring. Sexual intercourse, or copulation, is principally the insertion and thrusting of the penis, usually when erect, into the vagina for sexual pleasure, reproduction, or both. ", None),
         4: ("Lesson 4: Welcome back to Sexual Education 101! Today's education is about safe sex. Safe sex is incredibly important to make sure that you stay safe. One of the best tools to do this is to use a condom, a sheath-shaped barrier device used during sexual intercourse to reduce the probability of pregnancy or a sexually transmitted infection (STIs).", None)
     },
     2: {
         1: ("Welcome to Lesson 1: Introduction to Financial Mathematics. Math is a language that can be applied to a variety of different applications. It is a very powerful tool that can help you manage your money! Managing money in order to be able to buy and do the things you want is a skill that can be developed. If you are able to save money on a daily/weekly/monthly basis, it will help you have enough capital for large purchases such as a car or a phone. Math is important to budgeting and saving money because it helps give you an understanding of how much you need to save in order to buy the things you want." , None),
-        2: ("Welcome to Lesson 2: Budgeting. The first step to saving money is to figure out how much you spend. The most important thing while budgeting is keeping track of all your expenses. Keep track of all your expenses that means every coffee, newspaper and snack you buy. Ideally, you can account for every penny. Once you have your data, organize the numbers by categories, such as gas, groceries and mortgage, and total each amount. Consider using your credit card or bank statements to help you with this. If you bank online, you may be able to filter your statements to easily break down your spending. Once you have an idea of what you spend in a month, you can begin to organize your recorded expenses into a workable budget. Your budget should outline how your expenses measure up to your income so you can plan your spending and limit overspending. In addition to your monthly expenses, be sure to factor in expenses that occur regularly but not every month.", None)
+        2: ("Welcome to Lesson 2: Budgeting. The first step to saving money is to figure out how much you spend. The most important thing while budgeting is keeping track of all your expenses. Keep track of all your expenses that means every coffee, newspaper and snack you buy. Ideally, you can account for every penny. Once you have your data, organize the numbers by categories, such as gas, groceries and mortgage, and total each amount. Consider using your credit card or bank statements to help you with this. If you bank online, you may be able to filter your statements to easily break down your spending. Once you have an idea of what you spend in a month, you can begin to organize your recorded expenses into a workable budget. Your budget should outline how your expenses measure up to your income so you can plan your spending and limit overspending. In addition to your monthly expenses, be sure to factor in expenses that occur regularly but not every month.", 'http://i62.photobucket.com/albums/h92/Anushree_Agrawal/budgeting1_zpsvtphtuv4.jpg')
     }
 }
 
@@ -86,7 +84,6 @@ def transition(phone_num, body):
         elif message == '/prize':
             prize(phone_num)
         elif message == '/' + str(conf_code):
-            print('lalala')
             put_money(phone_num)
         elif message == '/leaderboard':
             leaderboard(phone_num)
