@@ -388,12 +388,10 @@ footer ul li a:hover {
     text-decoration: none
 }
 .bg-primary {
-    background: #fdcc52;
-    background: -webkit-linear-gradient(#fdcc52, #fdc539);
-    background: linear-gradient(#fdcc52, #fdc539)
+    background: rgba(225,36,113,1);
 }
 .text-primary {
-    color: #fdcc52
+    color: rgba(225,36,113,1);
 }
 .no-gutter>[class*=col-] {
     padding-right: 0;
