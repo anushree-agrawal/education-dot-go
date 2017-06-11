@@ -13,17 +13,19 @@ auth_token = "0052aff4f3c52903d4f5ed6b811dc7c5"
 client = Client(account_sid, auth_token)
 
 def send_sms(phone_num, text_body):
-    message = client.api.account.messages.create(to=str(phone_num),
-                                             from_="+16179413912",
-                                             body=str(text_body))
-    logging.info({'sent_to': phone_num, 'message': text_body})
-
-# def send_mms(phone_num, media):
-# 	message = client.api.account.messages.create(to="+12316851234",
-#                                              from_="+15555555555",
-#                                              body="Hello there!",
-#                                              media_url=[
-#                                                    'https://demo.twilio.com/owl.png',
-#                                                    'https://demo.twilio.com/logo.png'])
-
-# send_sms('+16177101266', 'Parker you bastard!')
+    if isinstance(text_body, tuple):
+        if text_body[1] is not None:
+            client.messages.create(to=str(phone_num),
+                                   from_="+16179413912",
+                                   body=str(text_body[0]),
+                                   media_url=text_body[1])
+        else: # no URL available
+            client.messages.create(to=str(phone_num),
+                                   from_="+16179413912",
+                                   body=str(text_body[0]))
+    else: # when the input message is not a tuple
+        client.messages.create(to=str(phone_num),
+                               from_="+16179413912",
+                               body=str(text_body[0]))
+    # log messages sent
+    logging.info({'sent_to': phone_num, 'message': text_body[0]})
